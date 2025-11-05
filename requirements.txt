@@ -1,0 +1,8 @@
+langchain~=0.2.0
+langchain-community~=0.2.0
+langchain-weaviate
+langchain-ollama~=0.1.0
+weaviate-client~=4.6.0
+pypdf~=4.2.0
+tiktoken~=0.7.0
+streamlit
