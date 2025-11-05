@@ -15,7 +15,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.documents import Document
 
-# --- CONSTANTS (from Section 3.1) ---
+# --- CONSTANTS  ---
 WEAVIATE_URL = "http://localhost:8080"
 WEAVIATE_INDEX_NAME = "LangChain" # Default Weaviate collection name for LangChain
 EMBEDDING_MODEL = "nomic-embed-text"
@@ -39,8 +39,8 @@ def setup_rag_pipeline(uploaded_file):
     (Based on Section 3.1's setup_rag_pipeline)
     """
     
-    # --- MOVED CLIENT CONNECTION HERE ---
-    # This ensures we connect every time the function is run for a new file.
+    
+   
     try:
         client = weaviate.Client(url=WEAVIATE_URL)
         print("--- Connected to Weaviate ---")
@@ -50,7 +50,7 @@ def setup_rag_pipeline(uploaded_file):
         return None  # Stop execution if we can't connect
     # --- END NEW CODE ---
 
-    # 0. Save temporary file to read
+   
     # PyPDFLoader needs a file path
     with open(f"./temp_{uploaded_file.name}", "wb") as f:
         f.write(uploaded_file.getbuffer())
@@ -198,4 +198,5 @@ if uploaded_file:
                     st.session_state.messages.append({"role": "assistant", "content": response})
 
 else:
+
     st.warning("Please upload a PDF document to begin.")
